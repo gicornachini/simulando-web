@@ -15,6 +15,8 @@ class QuestionChoiceSerializer(serializers.ModelSerializer):
 
 
 class QuestionChoicesSerializer(QuestionSerializer):
+    """ Used to list question with their respective available choices. """
+
     question_choices = QuestionChoiceSerializer(read_only=True, many=True)
     class Meta:
         model = Question
