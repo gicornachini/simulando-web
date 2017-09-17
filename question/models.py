@@ -11,7 +11,7 @@ class Question(models.Model):
 
 
 class QuestionChoice(models.Model):
-    question = models.ForeignKey(Question)
+    question = models.ForeignKey(Question, related_name='question_choices')
     text = models.TextField()
     letter = models.CharField(max_length=1)
 

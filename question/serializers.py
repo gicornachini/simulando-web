@@ -11,4 +11,11 @@ class QuestionSerializer(serializers.ModelSerializer):
 class QuestionChoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = QuestionChoice
-        fields = ('id', 'question', 'text', 'letter')
+        fields = ('id', 'text', 'letter')
+
+
+class QuestionChoicesSerializer(QuestionSerializer):
+    question_choices = QuestionChoiceSerializer(read_only=True, many=True)
+    class Meta:
+        model = Question
+        fields = ('id', 'text', 'correct_choice', 'question_choices')
