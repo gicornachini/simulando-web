@@ -7,13 +7,13 @@ from rest_framework.generics import ListAPIView
 
 from question.models import Question
 
-from question.serializers import QuestionChoicesSerializer
+from question.serializers import QuestionAlternativesSerializer
 
 
 class AllQuestionsAPIView(ListAPIView):
     authentication_classes = ()
     permission_classes = ()
-    serializer_class = QuestionChoicesSerializer
+    serializer_class = QuestionAlternativesSerializer
 
     def get_queryset(self):
-        return Question.objects.all()
+        return Question.objects.all().prefetch_related('question_choices')

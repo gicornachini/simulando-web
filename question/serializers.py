@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from question.models import Question, QuestionChoice
+from question.models import Question, QuestionAlternative
 
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -8,16 +8,16 @@ class QuestionSerializer(serializers.ModelSerializer):
         fields = ('id', 'text', 'correct_choice')
 
 
-class QuestionChoiceSerializer(serializers.ModelSerializer):
+class QuestionAlternativeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = QuestionChoice
+        model = QuestionAlternative
         fields = ('id', 'text', 'letter')
 
 
-class QuestionChoicesSerializer(QuestionSerializer):
+class QuestionAlternativesSerializer(QuestionSerializer):
     """ Used to list question with their respective available choices. """
 
-    question_choices = QuestionChoiceSerializer(read_only=True, many=True)
+    question_choices = QuestionAlternativeSerializer(read_only=True, many=True)
     class Meta:
         model = Question
         fields = ('id', 'text', 'correct_choice', 'question_choices')
