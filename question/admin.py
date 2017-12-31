@@ -10,6 +10,7 @@ class QuestionAlternativeInline(admin.TabularInline):
     model = QuestionAlternative
 
 
+@admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
     raw_id_fields = ['correct_choice']
     inlines = [
@@ -17,5 +18,4 @@ class QuestionAdmin(admin.ModelAdmin):
     ]
 
 
-admin.site.register(Question, QuestionAdmin)
 admin.site.register(QuestionAlternative)
