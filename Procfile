@@ -1,1 +1,1 @@
-web: gunicorn rabiskando.wsgi --log-file -
+web: gunicorn vocesabia.wsgi --log-file -
