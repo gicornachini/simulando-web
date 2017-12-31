@@ -1,0 +1,1 @@
+web: gunicorn rabiskando.wsgi --log-file -
