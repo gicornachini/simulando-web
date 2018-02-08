@@ -4,15 +4,15 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 // Constant with your paths
 const paths = {
   // Put your structure paths here
-  DIST: path.resolve(__dirname, "dist"),
-  SRC: path.resolve(__dirname, "src"),
-  JS: path.resolve(__dirname, "src/js"),
-  PUBLIC: path.resolve(__dirname, "public")
+  DIST: path.resolve(__dirname, "/dist"),
+  SRC: path.resolve(__dirname, "./src"),
+  JS: path.resolve(__dirname, "./src/js"),
+  PUBLIC: path.resolve(__dirname, "./public")
 };
 // Webpack configuration
 // Change your entry point here
 module.exports = {
-  entry: path.join(paths.JS, "app.jsx"),
+  entry: path.join(paths.JS, "App.js"),
   output: {
     path: paths.DIST,
     filename: "app.bundle.js"
@@ -32,7 +32,10 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        loader: "babel-loader",
+        query: {
+          presets: ["react", "es2015"]
+        }
       },
       {
         test: /\.css$/,
@@ -49,6 +52,10 @@ module.exports = {
       {
         test: /\.(png|jpg|gif)$/,
         use: ["file-loader"]
+      },
+      {
+        test: /\.svg$/,
+        loader: "svg-loader"
       }
     ]
   },
