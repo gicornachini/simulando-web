@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../css/App.css";
 
-const API = 'http://www.json-generator.com/endpoint/json/get/cuInEjYfsi?indent=2';
+const API = 'http://www.mocky.io/v2/5a7dc97d3100005000cd0a52?query=';
 const DEFAULT_QUERY = 'redux';
 
 class App extends Component {
@@ -16,10 +16,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(API + DEFAULT_QUERY)
+    fetch(API)
       .then(response => response.json())
       .then(data => this.setState({ questions: data.questions }));
   }
+
   render() {
     const { questions } = this.state;
 
@@ -28,13 +29,17 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to React</h1>
         </header>
+
         <div className="Wrap-questions">
           {questions.map(question =>
-            <div key={question.objectID}>
-              <a href={question.url}>{question.title}</a>
+            <div key={question.pk}>
+              {/* pelo nome e perigoso usar hehehe */}
+              <div dangerouslySetInnerHTML={{ __html: question.fields.text }} />
             </div>
-          )}
+          )
+          }
         </div>
+
       </div>
     );
   }
