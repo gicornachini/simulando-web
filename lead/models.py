@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+
 class UserLead(models.Model):
     """ Model to warehouse all leads. """
     email = models.EmailField()
