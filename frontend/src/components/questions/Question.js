@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import QuestionAlternative from "./QuestionAlternative";
-import { createMarkup } from "../utils/utils";
+import { createMarkup } from "../../utils/utils";
 
 class Question extends Component {
   render() {

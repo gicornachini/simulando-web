@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import axios from "axios";
-import FreeQuestion from "./components/FreeQuestion";
+import FreeQuestion from "./components/questions/FreeQuestion";
 
 // TODO: Estruturar componentes em arquivos diferentes
 class App extends Component {
