@@ -50,6 +50,7 @@ MY_APPS = [
 
 EXTERNAL_APPS = [
     'rest_framework',
+    'webpack_loader',
 ]
 
 INSTALLED_APPS = INSTALLED_APPS + MY_APPS + EXTERNAL_APPS
@@ -69,7 +70,7 @@ ROOT_URLCONF = 'vocesabia.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates"), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -144,4 +145,11 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.FormParser',
         'rest_framework.parsers.MultiPartParser'
     )
+}
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+            'BUNDLE_DIR_NAME': 'bundles/',
+            'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.dev.json'),
+        }
 }
