@@ -10,6 +10,7 @@ const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 const envPublicUrl = process.env.PUBLIC_URL;
+const envDev = process.env.BABEL_ENV === 'development';
 
 function ensureSlash(path, needsSlash) {
   const hasSlash = path.endsWith('/');
@@ -38,13 +39,29 @@ function getServedPath(appPackageJson) {
   return ensureSlash(servedUrl, true);
 }
 
+
+// Apps bundles
+const bundles = {
+    'appIndex': [resolveApp('src/index.js'),],
+};
+
+// SetUp Hotload
+if(envDev) {
+  const hotDevServer = require.resolve('webpack/hot/dev-server');
+  const clientDevServer = require.resolve('webpack-dev-server/client') + '?http://localhost:3000';
+
+  Object.keys(bundles).forEach(function(key) {
+    bundles[key].push(hotDevServer)
+    bundles[key].push(clientDevServer)
+  });
+}
+
 // config after eject: we're in ./config/
 module.exports = {
   dotenv: resolveApp('.env'),
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveApp('src/index.js'),
+  appsBundle: bundles,
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   yarnLockFile: resolveApp('yarn.lock'),
