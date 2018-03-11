@@ -42,7 +42,7 @@ function getServedPath(appPackageJson) {
 
 // Apps bundles
 const bundles = {
-    'appIndex': [resolveApp('src/index.js'),],
+    'freeQuestion': [resolveApp('src/freeQuestion.js'),],
 };
 
 // SetUp Hotload

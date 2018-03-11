@@ -1,0 +1,25 @@
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Você Sabia?</title>
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">
+          Você Sabia?
+        </h1>
+        <p class="subtitle">
+          Jogo de perguntas e respostas!
+        </p>
+      </div>
+    </section>
+
+    <div id="root" class="container"></div>
+
+    {% render_bundle 'freeQuestion' %}
+  </body>
+</html>
