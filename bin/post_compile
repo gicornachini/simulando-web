@@ -8,8 +8,8 @@ if [ -f bin/run_collectstatic ]; then
     python manage.py collectstatic --noinput
 fi
 
-echo "-----> Running manage.py check --deploy --fail-level WARNING"
-python manage.py check --deploy --fail-level WARNING
+# echo "-----> Running manage.py check --deploy --fail-level WARNING"
+# python manage.py check --deploy --fail-level WARNING
 
 if [ -n "$AUTO_MIGRATE" ]; then
     echo "-----> Running manage.py migrate"
