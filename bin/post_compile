@@ -4,7 +4,7 @@ set -eo pipefail
 echo "----->Post-compile hook"
 
 echo "-----> Running yarn install"
-( cd frontend ; yarn install )
+( cd frontend ; npm install )
 
 
 echo "-----> Running run_collectstatic"
