@@ -3,6 +3,9 @@ set -eo pipefail
 
 echo "----->Post-compile hook"
 
+echo "-----> Running yarn install"
+( cd frontend ; yarn install )
+
 
 echo "-----> Running run_collectstatic"
 python manage.py collectstatic --noinput
