@@ -6,6 +6,9 @@ echo "----->Post-compile hook"
 echo "-----> Running yarn install"
 ( cd frontend ; yarn install )
 
+echo "-----> Running yarn build"
+( cd frontend ; yarn build )
+
 
 echo "-----> Running run_collectstatic"
 python manage.py collectstatic --noinput
